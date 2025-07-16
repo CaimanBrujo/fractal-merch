@@ -1,10 +1,12 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { supabase } from '@/lib/supabaseClient';
+import { createSupabaseClient } from '@/lib/supabaseClient';
 import ProductCard from '@/components/ProductCard';
 
 export default function CatalogPage() {
+  const supabase = createSupabaseClient();
+
   const [products, setProducts] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -22,7 +24,7 @@ export default function CatalogPage() {
     };
 
     fetchProducts();
-  }, []);
+  }, [supabase]);
 
   if (loading) return <p className="p-4">Cargando productos...</p>;
   if (error) return <p className="p-4 text-red-500">{error}</p>;

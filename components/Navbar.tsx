@@ -8,7 +8,6 @@ import Button from './Button';
 export default function Navbar() {
   return (
     <nav className="flex justify-between items-center p-4 border-b border-gray-200">
-      {/* Left: Logo + Catalog */}
       <div className="flex items-center gap-6">
         <Link href="/" className="text-2xl font-bold">
           <Logo />
@@ -21,9 +20,10 @@ export default function Navbar() {
         </Link>
       </div>
 
-      {/* Right: Login */}
       <div className="flex items-center gap-2">
-        <Button variant="primary">Login</Button>
+        <Link href="/login">
+          <Button variant="primary">Login</Button>
+        </Link>
       </div>
     </nav>
   );
